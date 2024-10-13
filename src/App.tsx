@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
-import Inicio from './Paginas/Inicio'
-import GestionCitas from './Paginas/GestionCitas'
-import AgendarCita from './Paginas/AgendarCita'
+import Inicio from './InicioPage/Inicio'
+import GestionCitas from './GestionCitasPage/GestionCitas'
+import AgendarCita from './AgendarCitaPage/AgendarCita'
 
 function App() {
 

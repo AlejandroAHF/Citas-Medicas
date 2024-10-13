@@ -1,5 +1,5 @@
-import Main from "../Componentes/Main/Main"
-import Navbar from "../Componentes/Navbar/Navbar"
+import Main from "./Componentes/Main/Main"
+import Navbar from "../Share/Componentes/Navbar/Navbar"
 
 const Inicio = () => {
   return (

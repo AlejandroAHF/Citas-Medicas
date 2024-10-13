@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import Navbar from '../Componentes/Navbar/Navbar'
+import Navbar from '../Share/Componentes/Navbar/Navbar'
+import CitasMedicasServicios from '../Services/CitasMedicasServicios';
 
 const AgendarCita = () => {
+  const [message, setMessage] = useState(false)
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     date: '',
     specialty: '',
-    comments: '',
+    comments: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -19,13 +21,43 @@ const AgendarCita = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Formulario enviado', formData);
-    // Aquí podrías agregar la lógica para enviar el formulario
+    let data = {
+      Nombre_Cliente: formData.fullName,
+      Correo:formData.email,
+      Fecha_Cita: formData.date,
+      Especialidad_Medica: formData.specialty,
+      Comentario: formData.comments
+    };
+    setMessage(true)
+      CitasMedicasServicios.create(data).then(() => {
+      console.log("Created successfully!");
+    });
+  };
+
+  const NuevaCita = () => {
+    setFormData({
+      fullName: '',
+      email: '',
+      date: '',
+      specialty: '',
+      comments: ''
+    })
+    setMessage(false)
   };
 
   return (
     <>
       <Navbar/>
+      {message ? (
+          <div className="bg-white shadow-md rounded-lg border-2 border-blue-500 p-6 m-5 max-w-md mx-auto text-center">
+            <h4 className="text-lg font-bold text-blue-600 mb-4">
+              ¡Cita agendada correctamente!
+            </h4>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out" onClick={NuevaCita}>
+              Agendar Cita
+            </button>
+          </div>
+      ) : (
       <div className="max-w-md mx-auto border-2 border-blue-500 bg-white p-8 rounded-lg shadow-lg mt-10">
       <h2 className="text-2xl font-bold text-center mb-6">Agendar una Cita Médica</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -75,6 +107,7 @@ const AgendarCita = () => {
         </button>
       </form>
     </div>
+    )}
     </>
   )
 }

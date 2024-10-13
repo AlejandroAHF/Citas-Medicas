@@ -1,25 +1,25 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore"; // Importa Firestore
+// src/services/CitasMedicasServicios.ts
+import { db } from "../firebase"; // Importa la instancia de Firestore
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore"; // Importa las funciones necesarias
 
-/*firebase.firestore(): Esto te da acceso a la base de datos Firestore.
-collection("/CitasMedicas"): Obtienes una referencia a la colección CitasMedicas.*/
-const db = firebase.firestore().collection("/CitasMedicas");
+// Referencia a la colección "CitasMedicas" usando la función `collection`
+const citasMedicasCollection = collection(db, "CitasMedicas");
 
 class CitasMedicasServicios {
+  // Obtiene todas las citas
   getAll() {
-    return db.get(); // Devuelve todas las citas
+    return getDocs(citasMedicasCollection); // Devuelve todas las citas
   }
 
+  // Crea una nueva cita
   create(CitasMedicas: any) {
-    return db.add(CitasMedicas); // Agrega una nueva cita
+    return addDoc(citasMedicasCollection, CitasMedicas); // Agrega una nueva cita
   }
 
-  update(id: string, value: any) {
-    return db.doc(id).update(value); // Actualiza una cita por ID
-  }
-
+  // Elimina una cita por ID
   delete(id: string) {
-    return db.doc(id).delete(); // Elimina una cita por ID
+    const citaDoc = doc(db, "CitasMedicas", id);
+    return deleteDoc(citaDoc); // Elimina la cita con el ID
   }
 }
 
