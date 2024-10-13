@@ -1,6 +1,6 @@
 // src/services/CitasMedicasServicios.ts
 import { db } from "../firebase"; // Importa la instancia de Firestore
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore"; // Importa las funciones necesarias
+import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore"; // Importa las funciones necesarias
 
 // Referencia a la colección "CitasMedicas" usando la función `collection`
 const citasMedicasCollection = collection(db, "CitasMedicas");

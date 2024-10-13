@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/firebase.ts","./src/main.tsx","./src/vite-env.d.ts","./src/agendarcitapage/agendarcita.tsx","./src/gestioncitaspage/gestioncitas.tsx","./src/iniciopage/inicio.tsx","./src/iniciopage/componentes/main/main.tsx","./src/services/citasmedicasservicios.ts","./src/share/componentes/navbar/navbar.tsx"],"errors":true,"version":"5.6.2"}
