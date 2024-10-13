@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../Share/Componentes/Navbar/Navbar';
 import CitasMedicasServicios from '../Services/CitasMedicasServicios';
 
